@@ -2,9 +2,9 @@
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<button type="button" onclick="createArithmeticOperation('＋')">足し算</button>
-<button type="button" onclick="createArithmeticOperation('ー')">引き算</button>
-<button type="button" onclick="createArithmeticOperation('✕')">掛け算</button>
+<button type="button" onclick="createArithmeticOperation('+')">足し算</button>
+<button type="button" onclick="createArithmeticOperation('-')">引き算</button>
+<button type="button" onclick="createArithmeticOperation('×')">掛け算</button>
 <button type="button" onclick="createArithmeticOperation('÷')">割り算</button>
 <br>
 <button type="button" onclick="createFirstDegreePolynomial()">一次方程式</button>
@@ -44,12 +44,12 @@
     // 一次方程式
 	function createFirstDegreePolynomial() {
 		var [a, b, c] = getIntegers(3);
-		var signArr = ["＋", "ー"];
+		var signArr = ["+", "-"];
 		var sign = signArr[Math.floor(Math.random() * signArr.length)];
 
-		beginLatex("#problem");
+		beginLatex();
 		$("#problem").append(`${a} ${sign} ${b}x = ${c}` + "\n");
-		endLatex("problem");
+		endLatex();
 	}
 
 	function solve() {
@@ -60,11 +60,11 @@
 		var num1 = parseInt(arr[0]);
 		var sym = arr[1];
 		var num2 = parseInt(arr[2]);
-		if (sym === "＋") {
+		if (sym === "+") {
             document.getElementById('answer').innerHTML = num1 + num2;
-		} else if (sym === "ー") {
+		} else if (sym === "-") {
 			document.getElementById('answer').innerHTML = num1 - num2;
-		} else if (sym === "✕") {
+		} else if (sym === "×") {
 			document.getElementById('answer').innerHTML = num1 * num2;
 		} else if (sym === "÷") {
 			document.getElementById('answer').innerHTML = num1 / num2;
