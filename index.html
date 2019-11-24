@@ -1,0 +1,17 @@
+<div id="n"></div>
+
+<script>
+	function getRandomIntInclusive(min = 1, max = 9) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function createAdd() {
+		var a = getRandomIntInclusive();
+		var b = getRandomIntInclusive();
+		return `${a} + ${b}`;
+	}
+
+    document.getElementById('n').innerHTML = createAdd();
+</script>
