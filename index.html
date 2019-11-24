@@ -1,6 +1,9 @@
 <button type="button" onclick="createAdd()">足し算</button>
+<button type="button" onclick="createSub()">引き算</button>
+<button type="button" onclick="createMul()">掛け算</button>
+<button type="button" onclick="createDiv()">割り算</button>
 
-<div id="n"></div>
+<div id="problem"></div>
 
 <script>
 	function getRandomIntInclusive(min = 1, max = 9) {
@@ -9,10 +12,30 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
+	function getIntegers(num) {
+	    var integers = [];
+		for (var i = 1; i <= num; i++) { integers.push(getRandomIntInclusive()); }
+		return integers;
+	}
+
 	function createAdd() {
-		var a = getRandomIntInclusive();
-		var b = getRandomIntInclusive();
-		document.getElementById('n').innerHTML = `${a} + ${b}`;
+		var [a, b] = getIntegers(2);
+		document.getElementById('problem').innerHTML = `${a} ＋ ${b}`;
+		return;
+	}
+	function createSub() {
+		var [a, b] = getIntegers(2);
+		document.getElementById('problem').innerHTML = `${a} ー ${b}`;
+		return;
+	}
+	function createMul() {
+		var [a, b] = getIntegers(2);
+		document.getElementById('problem').innerHTML = `${a} ✕ ${b}`;
+		return;
+	}
+	function createDiv() {
+		var [a, b] = getIntegers(2);
+		document.getElementById('problem').innerHTML = `${a} ÷ ${b}`;
 		return;
 	}
 </script>
