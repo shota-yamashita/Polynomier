@@ -43,8 +43,12 @@
 
     // 一次方程式
 	function createFirstDegreePolynomial() {
+		var [a, b, c] = getIntegers(3);
+		var signArr = ["＋", "ー"];
+		var sign = signArr[Math.floor(Math.random() * signArr.length)];
+
 		beginLatex("#problem");
-		$("#problem").append("2x+1 = 3" + "\n");
+		$("#problem").append(`${a} ${sign} ${b}x = ${c}` + "\n");
 		endLatex("problem");
 	}
 
@@ -52,7 +56,7 @@
 		var problem = document.getElementById("problem").innerText;
 		if (problem === "") { alert("問題を作った後にしてください。"); }
 		var arr = problem.split(' ');
-		// 今後、複数の要素に対応すると思う。今は2つ。
+		// 今後、複数パターンの項に対応すると思う。今は2つ。
 		var num1 = parseInt(arr[0]);
 		var sym = arr[1];
 		var num2 = parseInt(arr[2]);
