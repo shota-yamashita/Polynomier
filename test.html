@@ -1,0 +1,85 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.4/math.min.js"></script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<button type="button" onclick="createFirstDegreePolynomial()">G</button>
+<div id="problem"></div>
+
+<script>
+	function getRandomIntInclusive(min = 1, max = 9) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	function getIntegers(num) {
+	    var integers = [];
+		for (var i = 1; i <= num; i++) { integers.push(getRandomIntInclusive()); }
+		return integers;
+	}
+
+	function beginLatex() {
+        $("#problem").html("\\begin\{align\} \n");
+	}
+
+	function endLatex() {
+		$("#problem").append("\\end\{align\}");
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "problem"]);
+	}
+
+    // 一次方程式
+	function createFirstDegreePolynomial() {
+        var signArr = ["+", "−"];
+        var a, b, c, sign;
+        var xPettern;
+        beginLatex();
+
+        for (var i=0; i<= 10; i++) {
+		    [a, b, c] = getIntegers(3);
+		    sign = signArr[Math.floor(Math.random() * signArr.length)];
+            xPettern = getRandomIntInclusive(min = 1, max = 12);
+
+            // 共通化したい
+            switch(xPettern) {
+                case 1:
+                $("#problem").append(`${a}x ${sign} ${b} = ${c} \\\\`);
+                break;
+                case 2:
+                $("#problem").append(`${a} ${sign} ${b}x = ${c} \\\\`);
+                break;
+                case 3:
+                $("#problem").append(`${a} ${sign} ${b}x = ${c}x \\\\`);
+                break;
+                case 4:
+                $("#problem").append(`${a}x ${sign} ${b}x = ${c} \\\\`);
+                break;
+                case 5:
+                $("#problem").append(`${a} ${sign} ${b}x = ${c}x \\\\`);
+                break;
+                case 6:
+                $("#problem").append(`${a}x ${sign} ${b}x = ${c} \\\\`);
+                break;
+                case 7:
+                $("#problem").append(`${a}x = ${b} ${sign} ${c} \\\\`);
+                break;
+                case 8:
+                $("#problem").append(`${a} = ${b}x ${sign} ${c} \\\\`);
+                break;
+                case 9:
+                $("#problem").append(`${a} = ${b} ${sign} ${c}x \\\\`);
+                break;
+                case 10:
+                $("#problem").append(`${a}x = ${b}x ${sign} ${c} \\\\`);
+                break;
+                case 11:
+                $("#problem").append(`${a} = ${b}x ${sign} ${c}x \\\\`);
+                break;
+                case 12:
+                $("#problem").append(`${a}x = ${b} ${sign} ${c}x \\\\`);
+                break;
+            }
+        };
+
+		endLatex();
+	}
+</script>
