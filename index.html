@@ -5,6 +5,9 @@
 
 <div id="problem"></div>
 
+<button type="button" onclick="solve()">回答表示</button>
+<div id="answer"></div>
+
 <script>
 	function getRandomIntInclusive(min = 1, max = 9) {
 		min = Math.ceil(min);
@@ -18,10 +21,33 @@
 		return integers;
 	}
 
+	function solve() {
+		var problem = document.getElementById("problem").innerText;
+		var arr = problem.split(' ');
+		// 今後、複数の要素に対応すると思う。今は2つ。
+		var num1 = parseInt(arr[0]);
+		var sym = arr[1];
+		var num2 = parseInt(arr[2]);
+		console.log(num1 + num2);
+		document.getElementById('answer').innerHTML = num1 + num2;
+		if (sym === "＋") {
+            document.getElementById('answer').innerHTML = num1 + num2;
+		} else if (sym === "ー") {
+			document.getElementById('answer').innerHTML = num1 - num2;
+		} else if (sym === "✕") {
+			document.getElementById('answer').innerHTML = num1 * num2;
+		} else if (sym === "÷") {
+			document.getElementById('answer').innerHTML = num1 / num2;
+		} else {
+			// 未実装。
+		}
+		return;
+	}
+
     // 四則演算
 	function createArithmeticOperation(sign) {
 		var [a, b] = getIntegers(2);
-		document.getElementById('problem').innerHTML = `${a} ${sign} ${b}`;
+		document.getElementById('problem').innerText = `${a} ${sign} ${b}`;
 		return;
 	}
 </script>
