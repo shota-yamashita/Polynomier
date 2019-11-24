@@ -1,8 +1,13 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.0.4/math.min.js"></script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
 <button type="button" onclick="createArithmeticOperation('＋')">足し算</button>
 <button type="button" onclick="createArithmeticOperation('ー')">引き算</button>
 <button type="button" onclick="createArithmeticOperation('✕')">掛け算</button>
 <button type="button" onclick="createArithmeticOperation('÷')">割り算</button>
-
+<br>
+<button type="button" onclick="createFirstDegreePolynomial()">一次方程式</button>
 <div id="problem"></div>
 
 <button type="button" onclick="solve()">回答表示</button>
@@ -19,6 +24,21 @@
 	    var integers = [];
 		for (var i = 1; i <= num; i++) { integers.push(getRandomIntInclusive()); }
 		return integers;
+	}
+
+	// 四則演算
+	function createArithmeticOperation(sign) {
+		var [a, b] = getIntegers(2);
+		document.getElementById('problem').innerText = `${a} ${sign} ${b}`;
+		return;
+	}
+
+    // 一次方程式
+	function createFirstDegreePolynomial() {
+		$("#problem").html("\\begin\{align\} \n");
+        $("#problem").append("2x+1 = 3" + "\n");
+        $("#problem").append("\\end\{align\}");
+		MathJax.Hub.Queue(["Typeset", MathJax.Hub, "problem"]);
 	}
 
 	function solve() {
@@ -40,13 +60,6 @@
 		} else {
 			// 未実装。
 		}
-		return;
-	}
-
-    // 四則演算
-	function createArithmeticOperation(sign) {
-		var [a, b] = getIntegers(2);
-		document.getElementById('problem').innerText = `${a} ${sign} ${b}`;
 		return;
 	}
 </script>
