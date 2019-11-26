@@ -30,17 +30,17 @@
     // 一次方程式
 	function createFirstDegreePolynomial() {
         var signArr = ["+", "−"];
-        var a, b, c, sign;
-        var xPettern;
+        var a, b, c, sign, pettern;
+
         beginLatex();
 
-        for (var i=0; i<= 10; i++) {
+        for (var i=0; i<=10; i++) {
 		    [a, b, c] = getIntegers(3);
 		    sign = signArr[Math.floor(Math.random() * signArr.length)];
-            xPettern = getRandomIntInclusive(min = 1, max = 12);
+            pettern = getRandomIntInclusive(min = 1, max = 12);
 
             // 共通化したい
-            switch(xPettern) {
+            switch(pettern) {
                 case 1:
                 $("#problem").append(`${a}x ${sign} ${b} = ${c} \\\\\\\\`);
                 break;
@@ -81,5 +81,5 @@
         };
 
 		endLatex();
-	}
+    }
 </script>
