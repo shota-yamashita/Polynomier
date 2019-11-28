@@ -19,20 +19,33 @@ function endLatex() {
 	MathJax.Hub.Queue(["Typeset", MathJax.Hub, "problem"]);
 }
 
+function sign() {
+	var signArr = ["+", "−"];
+	return signArr[Math.floor(Math.random() * signArr.length)];
+}
+
 // 四則演算
-function createArithmeticOperation(sign) {
+function buildArithmeticOperation(sign) {
 	var [a, b] = getIntegers(2);
 	document.getElementById('problem').innerText = `${a} ${sign} ${b}`;
 }
 
 // 一次方程式
-function createFirstDegreePolynomial() {
+function buildFirstDegreePolynomial() {
 	var [a, b, c] = getIntegers(3);
-	var signArr = ["+", "-"];
-	var sign = signArr[Math.floor(Math.random() * signArr.length)];
 
 	beginLatex();
-	$("#problem").append(`${a} ${sign} ${b}x = ${c}` + "\n");
+	$("#problem").append(`${a} ${sign()} ${b}x = ${c}`);
+	endLatex();
+}
+
+// 二次方程式
+function buildQuadraticEquation() {
+	var a, b, c;
+	[a, b, c] = getIntegers(3);
+
+	beginLatex();
+	$("#problem").append(`${a}x^{2} ${sign()} ${b}x ${sign()} ${c} = 0`);
 	endLatex();
 }
 

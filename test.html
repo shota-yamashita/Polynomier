@@ -2,7 +2,7 @@
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<button type="button" onclick="createFirstDegreePolynomial()">G</button>
+<button type="button" onclick="buildFirstDegreePolynomial()">G</button>
 <div id="problem"></div>
 
 <script>
@@ -12,11 +12,11 @@
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	function getIntegers(num) {
-	    var integers = [];
-		for (var i = 1; i <= num; i++) { integers.push(getRandomIntInclusive()); }
-		return integers;
-	}
+    function getIntegers(num) {
+        var integers = [];
+        for (var i = 1; i <= num; i++) { integers.push(getRandomIntInclusive()); }
+        return integers;
+    }
 
 	function beginLatex() {
         $("#problem").html("\\begin\{align\} \n");
@@ -28,7 +28,7 @@
 	}
 
     // 一次方程式
-	function createFirstDegreePolynomial() {
+	function buildFirstDegreePolynomial() {
         var signArr = ["+", "−"];
         var a, b, c, sign, pettern;
 
