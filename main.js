@@ -49,24 +49,3 @@ function buildQuadraticEquation() {
 	$("#problem").append(`${a}x^{2} ${sign()} ${b}x ${sign()} ${c} = 0`);
 	endLatex();
 }
-
-function solve() {
-	var problem = document.getElementById("problem").innerText;
-	if (problem === "") { alert("問題を作った後にしてください。"); }
-	var arr = problem.split(' ');
-	// 今後、複数パターンの項に対応すると思う。今は2つ。
-	var num1 = parseInt(arr[0]);
-	var sym = arr[1];
-	var num2 = parseInt(arr[2]);
-	if (sym === "+") {
-		document.getElementById('answer').innerHTML = num1 + num2;
-	} else if (sym === "-") {
-		document.getElementById('answer').innerHTML = num1 - num2;
-	} else if (sym === "×") {
-		document.getElementById('answer').innerHTML = num1 * num2;
-	} else if (sym === "÷") {
-		document.getElementById('answer').innerHTML = num1 / num2;
-	} else {
-		alert("この機能は未実装です。");
-	}
-}

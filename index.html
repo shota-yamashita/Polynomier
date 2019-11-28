@@ -4,14 +4,16 @@
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<button type="button" onclick="buildArithmeticOperation('+')">足し算</button>
-<button type="button" onclick="buildArithmeticOperation('-')">引き算</button>
-<button type="button" onclick="buildArithmeticOperation('×')">掛け算</button>
-<button type="button" onclick="buildArithmeticOperation('÷')">割り算</button>
-<br>
-<button type="button" onclick="buildLinearEquation()">一次方程式</button>
-<button type="button" onclick="buildQuadraticEquation()">二次方程式</button>
-<div id="problem"></div>
+<div>
+    <button type="button" onclick="buildArithmeticOperation('+')">足し算</button>
+    <button type="button" onclick="buildArithmeticOperation('-')">引き算</button>
+    <button type="button" onclick="buildArithmeticOperation('×')">掛け算</button>
+    <button type="button" onclick="buildArithmeticOperation('÷')">割り算</button>
+</div>
 
-<button type="button" onclick="solve()">回答表示</button>
-<div id="answer"></div>
+<div>
+    <button type="button" onclick="buildLinearEquation()">一次方程式</button>
+    <button type="button" onclick="buildQuadraticEquation()">二次方程式</button>
+</div>
+
+<div id="problem"></div>
