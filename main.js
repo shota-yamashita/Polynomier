@@ -51,10 +51,19 @@ function buildQuadraticEquation() {
 }
 
 // 不定積分
-function buildIntegration() {
+function buildIntegral() {
 	var [a, b, c] = getIntegers(3);
 
 	beginLatex();
 	$("#problem").append(`\\int (${a}x^{2} ${sign()} ${b}x ${sign()} ${c}) \\, dx`);
+	endLatex();
+}
+
+// 定積分
+function buildDefiniteIntegral() {
+	var [a, b, c, d, e] = getIntegers(5);
+
+	beginLatex();
+	$("#problem").append(`\\int_{-${a}}^{${b}} (${c}x^{2} ${sign()} ${d}x ${sign()} ${e}) \\, dx`);
 	endLatex();
 }
