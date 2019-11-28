@@ -49,3 +49,12 @@ function buildQuadraticEquation() {
 	$("#problem").append(`${a}x^{2} ${sign()} ${b}x ${sign()} ${c} = 0`);
 	endLatex();
 }
+
+// 不定積分
+function buildIntegration() {
+	var [a, b, c] = getIntegers(3);
+
+	beginLatex();
+	$("#problem").append(`\\int (${a}x^{2} ${sign()} ${b}x ${sign()} ${c}) \\, dx`);
+	endLatex();
+}
