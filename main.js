@@ -31,8 +31,10 @@ function buildPolynomial(degree) {
     switch(degree) {
         case 0:
             var term = getRandomIntInclusive(min=0, max=3);
-            if (term === 0) { polynomial = `${a}`; }
-            else if (term === 1) { polynomial = `${a}x`; }
+            if (term === 0) { polynomial = `${a}`; break; }
+
+            if (a === 1) { a = ""; }
+            if (term === 1) { polynomial = `${a}x`; }
             else if (term === 2) { polynomial = `${a}x^2`; }
             else if (term === 3) { polynomial = `${a}x^3`; }
             break;
