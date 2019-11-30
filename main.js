@@ -30,9 +30,12 @@ function buildPolynomial(degree) {
     var [a, b, c] = getIntegers(integersCount);
     switch(degree) {
         case 1:
+            if (a === 1) { a = ""; }
             polynomial = `${a}x ${sign()} ${b}`;
             break;
          case 2:
+            if (a === 1) { a = ""; }
+            if (b === 1) { b = ""; }
             polynomial = `${a}x^{2} ${sign()} ${b}x ${sign()} ${c}`;
             break;
     }
