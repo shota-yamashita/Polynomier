@@ -27,8 +27,11 @@ function sign() {
 function buildPolynomial(degree) {
     var polynomial;
     var integersCount = degree + 1;
-    var [a, b, c] = getIntegers(integersCount);
+    var [a, b, c, d] = getIntegers(integersCount);
     switch(degree) {
+        case 0:
+            polynomial = `${a}`;
+            break;
         case 1:
             if (a === 1) { a = ""; }
             polynomial = `${a}x ${sign()} ${b}`;
@@ -38,6 +41,11 @@ function buildPolynomial(degree) {
             if (b === 1) { b = ""; }
             polynomial = `${a}x^{2} ${sign()} ${b}x ${sign()} ${c}`;
             break;
+        case 3:
+            if (a === 1) { a = ""; }
+            if (b === 1) { b = ""; }
+            if (c === 1) { c = ""; }
+            polynomial = `${a}x^{3} ${sign()} ${b}x^{2} ${sign()} ${c}x ${sign()} ${d}`;
     }
     return polynomial;
 }
@@ -68,16 +76,20 @@ function buildQuadraticEquation() {
 
 // 不定積分
 function buildIntegral() {
+	var term = getRandomIntInclusive(min=0, max=3);
+
     beginLatex();
-    $("#problem").append(`\\int (${buildPolynomial(2)}) \\, dx`);
+    $("#problem").append(`\\int (${buildPolynomial(term)}) \\, dx`);
     endLatex();
 }
 
 // 定積分
 function buildDefiniteIntegral() {
-    var [a, b] = getIntegers(2);
+	var a = getRandomIntInclusive(min=1, max=3);
+	var b = getRandomIntInclusive(min=1, max=3);
+	var term = getRandomIntInclusive(min=0, max=3);
 
     beginLatex();
-    $("#problem").append(`\\int_{-${a}}^{${b}} (${buildPolynomial(2)}) \\, dx`);
+    $("#problem").append(`\\int_{-${a}}^{${b}} (${buildPolynomial(term)}) \\, dx`);
     endLatex();
 }
