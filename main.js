@@ -48,9 +48,13 @@ function buildPolynomial(degree) {
             polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)}`;
             break;
         case 2:
+            var axTerm = getRandomIntInclusive(min=2, max=4);
+            var bxTerm = getRandomIntInclusive(min=1, max=axTerm - 1);
+            var cxTerm = getRandomIntInclusive(min=0, max=bxTerm - 1);
             if (a === 1) { a = ""; }
             if (b === 1) { b = ""; }
-            polynomial = `${a}x^{2} ${sign()} ${b}x ${sign()} ${c}`;
+            if (c === 1) { c = ""; }
+            polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)}`;
             break;
         case 3:
             if (a === 1) { a = ""; }
@@ -66,22 +70,6 @@ function buildArithmeticOperation(sign) {
     var [a, b] = getIntegers(2);
     beginLatex();
     $("#problem").append(`${a} ${sign} ${b}`);
-    endLatex();
-}
-
-// 一次方程式
-function buildLinearEquation() {
-    var a = getIntegers(1);
-
-    beginLatex();
-    $("#problem").append(`${buildPolynomial(1)} = ${a}`);
-    endLatex();
-}
-
-// 二次方程式
-function buildQuadraticEquation() {
-    beginLatex();
-    $("#problem").append(`${buildPolynomial(2)} = 0`);
     endLatex();
 }
 
