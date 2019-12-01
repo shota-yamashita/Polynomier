@@ -42,7 +42,7 @@ function buildPolynomial(degree) {
     switch(degree) {
         case 0:
             var axTerm = getRandomIntInclusive(min=0, max=4);
-            if ([1, -1].includes(a) && axTerm <= 1) { a = ""; }
+            if ([1, -1].includes(a) && axTerm === 1) { a = ""; }
             polynomial = `${a}${xSign(axTerm)}`;
             break;
         case 1:
