@@ -35,20 +35,20 @@ function buildPolynomial(degree) {
     var integersCount = degree + 1;
     var [a, b, c, d] = getIntegers(integersCount);
 
-    if ( getRandomIntInclusive(min=1, max=2) === 1) {
+    if (getRandomIntInclusive(min=1, max=2) === 1) {
         a = a * (-1);
     }
 
     switch(degree) {
         case 0:
             var axTerm = getRandomIntInclusive(min=0, max=4);
-            if ([1, -1].includes(a) && axTerm === 1) { a = ""; }
+            if ([1, -1].includes(a) && 1 <= axTerm) { a = ""; }
             polynomial = `${a}${xSign(axTerm)}`;
             break;
         case 1:
             var axTerm = getRandomIntInclusive(min=1, max=4);
             var bxTerm = getRandomIntInclusive(min=0, max=axTerm - 1);
-            if (a === 1) { a = ""; }
+            if ([1, -1].includes(a)) { a = ""; }
             if (bxTerm === 1) { b = ""; }
             polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)}`;
             break;
@@ -56,7 +56,7 @@ function buildPolynomial(degree) {
             var axTerm = getRandomIntInclusive(min=2, max=4);
             var bxTerm = getRandomIntInclusive(min=1, max=axTerm - 1);
             var cxTerm = getRandomIntInclusive(min=0, max=bxTerm - 1);
-            if (a === 1) { a = ""; }
+            if ([1, -1].includes(a)) { a = ""; }
             if (b === 1) { b = ""; }
             if (cxTerm === 1) { c = ""; }
             polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)}`;
@@ -66,7 +66,7 @@ function buildPolynomial(degree) {
             var bxTerm = getRandomIntInclusive(min=2, max=axTerm - 1);
             var cxTerm = getRandomIntInclusive(min=1, max=bxTerm - 1);
             var dxTerm = getRandomIntInclusive(min=0, max=cxTerm - 1);
-            if (a === 1) { a = ""; }
+            if ([1, -1].includes(a)) { a = ""; }
             if (b === 1) { b = ""; }
             if (c === 1) { c = ""; }
             if (dxTerm === 1) { d = ""; }
@@ -95,11 +95,11 @@ function buildIntegral() {
 
 // 定積分
 function buildDefiniteIntegral() {
+
+    beginLatex();
     var a = getRandomIntInclusive(min=1, max=3);
     var b = getRandomIntInclusive(min=1, max=3);
     var term = getRandomIntInclusive(min=0, max=3);
-
-    beginLatex();
     $("#problem").append(`\\int_{-${a}}^{${b}} (${buildPolynomial(term)}) \\, dx`);
     endLatex();
 }
