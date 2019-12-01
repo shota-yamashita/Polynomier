@@ -57,10 +57,16 @@ function buildPolynomial(degree) {
             polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)}`;
             break;
         case 3:
+            var axTerm = getRandomIntInclusive(min=3, max=4);
+            var bxTerm = getRandomIntInclusive(min=2, max=axTerm - 1);
+            var cxTerm = getRandomIntInclusive(min=1, max=bxTerm - 1);
+            var dxTerm = getRandomIntInclusive(min=0, max=cxTerm - 1);
             if (a === 1) { a = ""; }
             if (b === 1) { b = ""; }
             if (c === 1) { c = ""; }
-            polynomial = `${a}x^{3} ${sign()} ${b}x^{2} ${sign()} ${c}x ${sign()} ${d}`;
+            if (d === 1) { d = ""; }
+            polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)} ${sign()} ${d}${xSign(dxTerm)}`;
+            break;
     }
     return polynomial;
 }
