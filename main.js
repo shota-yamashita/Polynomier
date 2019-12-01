@@ -24,6 +24,12 @@ function sign() {
     return signArr[Math.floor(Math.random() * signArr.length)];
 }
 
+function xSign(xTerm) {
+    if (xTerm === 0) { return ""; }
+    if (xTerm === 1) { return "x"; }
+    return `x^${xTerm}`
+}
+
 function buildPolynomial(degree) {
     var polynomial;
     var integersCount = degree + 1;
@@ -31,10 +37,8 @@ function buildPolynomial(degree) {
     switch(degree) {
         case 0:
             var axTerm = getRandomIntInclusive(min=0, max=4);
-            if (axTerm === 0) { polynomial = `${a}`; break; }
             if (a === 1) { a = ""; }
-            if (axTerm === 1) { polynomial = `${a}x`; }
-            else if ([2, 3, 4].includes(axTerm)) { polynomial = `${a}x^${axTerm}`; }
+            polynomial = `${a}${xSign(axTerm)}`;
             break;
         case 1:
             if (a === 1) { a = ""; }
