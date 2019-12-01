@@ -50,7 +50,7 @@ function buildPolynomial(degree) {
             var bxTerm = getRandomIntInclusive(min=0, max=axTerm - 1);
             if ([1, -1].includes(a)) { a = ""; }
             if (bxTerm === 1) { b = ""; }
-            polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)}`;
+            polynomial = `(${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)})`;
             break;
         case 2:
             var axTerm = getRandomIntInclusive(min=2, max=4);
@@ -59,7 +59,7 @@ function buildPolynomial(degree) {
             if ([1, -1].includes(a)) { a = ""; }
             if (b === 1) { b = ""; }
             if (cxTerm === 1) { c = ""; }
-            polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)}`;
+            polynomial = `(${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)})`;
             break;
         case 3:
             var axTerm = getRandomIntInclusive(min=3, max=4);
@@ -70,7 +70,7 @@ function buildPolynomial(degree) {
             if (b === 1) { b = ""; }
             if (c === 1) { c = ""; }
             if (dxTerm === 1) { d = ""; }
-            polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)} ${sign()} ${d}${xSign(dxTerm)}`;
+            polynomial = `(${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)} ${sign()} ${c}${xSign(cxTerm)} ${sign()} ${d}${xSign(dxTerm)})`;
             break;
     }
     return polynomial;
@@ -80,7 +80,7 @@ function buildPolynomial(degree) {
 function buildIntegral() {
     beginLatex();
     var term = getRandomIntInclusive(min=0, max=3);
-    $("#problem").append(`\\int (${buildPolynomial(term)}) \\, dx`);
+    $("#problem").append(`\\int ${buildPolynomial(term)} \\, dx`);
     endLatex();
 }
 
@@ -91,6 +91,6 @@ function buildDefiniteIntegral() {
     var a = getRandomIntInclusive(min=1, max=3);
     var b = getRandomIntInclusive(min=1, max=3);
     var term = getRandomIntInclusive(min=0, max=3);
-    $("#problem").append(`\\int_{-${a}}^{${b}} (${buildPolynomial(term)}) \\, dx`);
+    $("#problem").append(`\\int_{-${a}}^{${b}} ${buildPolynomial(term)} \\, dx`);
     endLatex();
 }
