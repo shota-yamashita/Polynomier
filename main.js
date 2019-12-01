@@ -41,8 +41,11 @@ function buildPolynomial(degree) {
             polynomial = `${a}${xSign(axTerm)}`;
             break;
         case 1:
+            var axTerm = getRandomIntInclusive(min=1, max=4);
+            var bxTerm = getRandomIntInclusive(min=0, max=axTerm - 1);
             if (a === 1) { a = ""; }
-            polynomial = `${a}x ${sign()} ${b}`;
+            if (b === 1) { b = ""; }
+            polynomial = `${a}${xSign(axTerm)} ${sign()} ${b}${xSign(bxTerm)}`;
             break;
         case 2:
             if (a === 1) { a = ""; }
