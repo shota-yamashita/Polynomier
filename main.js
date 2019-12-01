@@ -76,19 +76,10 @@ function buildPolynomial(degree) {
     return polynomial;
 }
 
-// 四則演算
-function buildArithmeticOperation(sign) {
-    var [a, b] = getIntegers(2);
-    beginLatex();
-    $("#problem").append(`${a} ${sign} ${b}`);
-    endLatex();
-}
-
 // 不定積分
 function buildIntegral() {
-    var term = getRandomIntInclusive(min=0, max=3);
-
     beginLatex();
+    var term = getRandomIntInclusive(min=0, max=3);
     $("#problem").append(`\\int (${buildPolynomial(term)}) \\, dx`);
     endLatex();
 }
