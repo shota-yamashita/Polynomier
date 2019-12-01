@@ -35,10 +35,6 @@ function buildPolynomial(degree) {
     var integersCount = degree + 1;
     var [a, b, c, d] = getIntegers(integersCount);
 
-    if (getRandomIntInclusive(min=1, max=2) === 1) {
-        a = a * (-1);
-    }
-
     switch(degree) {
         case 0:
             var axTerm = getRandomIntInclusive(min=0, max=4);
